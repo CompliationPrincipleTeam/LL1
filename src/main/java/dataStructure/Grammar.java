@@ -5,8 +5,8 @@ import java.util.HashSet;
 
 public class Grammar {
 	public String S="";							//开始符号也可以是：production1[0].left
-	public ArrayList<Production> production2;	//p1是把 E->A|b分开两个的产生式集合
-	public ArrayList<Production> production1;	//p2是把 E->A|b当作一个产生式
+	public ArrayList<Production> production2;	//p2是把 E->A|b分开两个的产生式集合
+	public ArrayList<Production> production1;	//p1是把 E->A|b当作一个产生式
 	public HashSet<String> vt;	//终结符集合
 	public HashSet<String> vn;	//非终结符集合
 	
