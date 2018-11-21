@@ -9,6 +9,7 @@ public class First {
 	public First(String VT)
 	{
 		this.vt=VT;
+		this.firstSet = new HashSet<Pair<String,Production>>();
 	}
 	
 	public void addElement(String element, Production production)
