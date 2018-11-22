@@ -1,3 +1,5 @@
+import dataStructure.Grammar;
+
 import java.util.List;
 
 /**
@@ -5,7 +7,7 @@ import java.util.List;
  * @date 2018/11/20
  */
 public interface IEliminateLeftRecursion {
-    void eliminateDirectLeftRecursion(String str);
+    List<String> eliminateDirectLeftRecursion(Grammar G);
 
     boolean isVn(char c);
 

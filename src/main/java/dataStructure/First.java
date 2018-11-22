@@ -15,7 +15,7 @@ public class First {
 	public void addElement(String element, Production production)
 	{
 		Pair<String,Production> pair = new Pair<String, Production>(element,production);
-		firstSet.add(pair);
+		this.firstSet.add(pair);
 		
 		//若first(A) = {a,b,c}, A->a|b|c
 		//则
