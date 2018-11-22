@@ -3,12 +3,12 @@ import javafx.util.*;
 import java.util.HashSet;
 
 public class First {
-	public String vt;
+	public String vn;
 	public HashSet<Pair<String,Production>> firstSet;
 	
-	public First(String VT)
+	public First(String Vn)
 	{
-		this.vt=VT;
+		this.vn=Vn;
 		this.firstSet = new HashSet<Pair<String,Production>>();
 	}
 	

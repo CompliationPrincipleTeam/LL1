@@ -9,5 +9,8 @@
         <module name="LL1" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="LL1" target="6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
