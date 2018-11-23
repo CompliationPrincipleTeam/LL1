@@ -1,0 +1,18 @@
+#E          i*i+i#      null
+#E'T        i*i+i#      E->TE'
+#E'T'F      i*i+i#      T->FT'
+#E'T'i      i*i+i#      F->i
+#E'T'       *i+i#       null
+#E'T'F*     *i+i#       T'->*FT'
+#E'T'F      *i+i#       null
+#E'T'i      i+i#        F->i
+#E'T'       +i#         T'->$
+#E'         +i#         T'->$
+#E'T+       +i#         E'->+TE'
+#E'T        i#          null
+#E'T'F      i#          T->FT'
+#E'T'i      i#          F->i
+#E'T'       #           null
+#E'         #           T'->$
+#           #           E'->$
+
