@@ -66,7 +66,7 @@ public class EliminateLeftRecursion implements IEliminateLeftRecursion {
 
 
             } else {
-                ep2.add(item);
+                ep1.add(item);
             }
         }
 
