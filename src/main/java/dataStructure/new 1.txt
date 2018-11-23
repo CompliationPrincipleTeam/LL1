@@ -1,0 +1,69 @@
+import java.util.*;
+ 
+public class PrintStack{
+
+    public static void main(String args[]) {
+        Stack<String> st = new Stack<String>();
+		st.push(new String("#"));//入栈#
+		st.push(new String(production1[0].left));//入栈E
+        bool flag=1;
+		int k=0;//string数组的位置
+		int ki=0;
+		in_sting[k];//string数组以#结尾
+		String a=new String(in_sting[k]);
+		while(flag){
+		
+			System.out.println("stack: " + st);//打印栈的内容
+			ki=k；
+			whiel(in_sting[ki])
+			{
+				System.out.printf("%s",in_sting[ki]);
+				ki++;
+			}//打印剩下的输入数组
+			System.out.println();
+			
+			
+			String X = (String) st.pop();//出栈到X
+			if(Vt.indexOf(X)!=-1)//查找位置
+			{
+				if(X==a){
+				k++;
+				a=new String(in_sting[k]);//转换输入的数组位串，且找到下一个
+				}
+				else {
+				System.out.println("文法有误");
+				System.exit(0);
+				}
+			}
+			 else if(X=="#")
+			 {
+				if(X==a)flag=0;
+				else{
+				System.out.println("文法有误");
+				System.exit(0);
+				}
+			 }
+			 else if(tableVn[mapVn[X]][mapVt[a]])
+			 {	
+				while(production2[ki])
+				{
+					if((production2[k].leftPart+"->"+production2[ki].rightPart))==table[mapVn[X]][mapVt[a]])
+					{
+						break;
+					}
+					ki++;
+				}//找到在产生式数组中的位置
+				String reverse = new String(production2[k].rightPart).reverse().toString();//倒置
+				String[] arr = reverse.split("");//分割字符串得到数组
+				ki=0;
+				while(arr[ki])
+				{
+				st.push(new String(arr[k]));//入栈
+				ki++;
+				}
+			 }
+		}
+		
+	
+    }
+}

@@ -50,7 +50,6 @@ public class Main {
 
 
 
-        //此处调用提取左公因子
 
         GetFirst getFirst=new GetFirst();
         First[] first = getFirst.getFirst(G);

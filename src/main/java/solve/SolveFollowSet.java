@@ -15,11 +15,12 @@ import dataStructure.Production;
 import javafx.util.Pair;
 
 public class SolveFollowSet {
-    public Grammar G = new Grammar();
-    public First[] first = init();
-    public void solve()
+    public Grammar G = null;
+    public First[] first = null;
+    public HashMap<String,String> solve(Grammar g, First[] f)
     {
-        first = this.init();
+        this.G = g;
+        this.first = f;
         HashMap<String,String> follow = new HashMap();
         for(int i=0;i<first.length;i++) {
             follow.put(first[i].vn, "");
@@ -40,7 +41,7 @@ public class SolveFollowSet {
                 String beta = "";
                 String A = p.get(i).leftPart;
                 String s = p.get(i).rightPart;
-                System.out.println(p.get(i).leftPart+"->"+s);
+                //System.out.println(p.get(i).leftPart+"->"+s);
                 int index = this.findNonterminal(s);	//alpha B beta中B的下标
 
                 if(index == -1)
@@ -60,16 +61,16 @@ public class SolveFollowSet {
 
 
                 //规则2
-                System.out.println("B="+B);
+                //System.out.println("B="+B);
                 String followB = follow.get(B);
-                System.out.println(followB);
+                //System.out.println(followB);
                 if(!beta.equals(""))
                     followB += this.getFirstOfBeta(beta);
                 if(!isAdd && !followB.equals(this.removeRepeatChar(followB)))
                     isAdd = true;
                 followB = this.removeRepeatChar(followB);
                 follow.put(B,followB);
-                System.out.println("follow"+B+":"+followB);
+                //System.out.println("follow"+B+":"+followB);
 
                 String followA="";
                 //规则3.2
@@ -81,7 +82,7 @@ public class SolveFollowSet {
                         isAdd = true;
                     followB = this.removeRepeatChar(followB);
                     follow.put(B,followB);
-                    System.out.println("follow"+B+":"+followB);
+                    //System.out.println("follow"+B+":"+followB);
                 }
 
                 //规则3.1
@@ -92,14 +93,14 @@ public class SolveFollowSet {
                     hasQuote = s.charAt(index+1)=='\''? 1 : 0;
 
                 B = s.substring(index,index+1+hasQuote);
-                System.out.println("B="+B);
+                //System.out.println("B="+B);
                 followA = follow.get(A);
                 followB = follow.get(B)+followA;
                 if(!isAdd && !followB.equals(this.removeRepeatChar(followB)))
                     isAdd = true;
                 followB = this.removeRepeatChar(followB);
                 follow.put(B,followB);
-                System.out.println("follow"+B+":"+followB);
+                //System.out.println("follow"+B+":"+followB);
             }
 
         }
@@ -107,8 +108,9 @@ public class SolveFollowSet {
 
 
         for(String key:follow.keySet()) {
-            System.out.println(key +":"+ follow.get(key));
+            System.out.println("follow("+key +"):"+ follow.get(key));
         }
+        return follow;
 
 
     }
@@ -276,13 +278,6 @@ public class SolveFollowSet {
         return res;
     }
 
-    @Test
-    public void test() {
-        SolveFollowSet solve = new SolveFollowSet();
-        solve.solve();
-
-
-    }
 
 //    G.addProduction("E", "TE'");
 //    G.addProduction("E'", "+TE'|$");
