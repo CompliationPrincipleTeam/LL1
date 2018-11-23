@@ -48,7 +48,6 @@ public class Main {
 
 
 
-        //此处调用提取左公因子
 
 
         //此处求First与Follow
