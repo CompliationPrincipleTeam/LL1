@@ -1,4 +1,6 @@
+import dataStructure.First;
 import dataStructure.Grammar;
+import solve.GetFirst;
 
 import java.util.List;
 
@@ -49,6 +51,11 @@ public class Main {
 
 
         //此处调用提取左公因子
+
+        GetFirst getFirst=new GetFirst();
+        First[] first = getFirst.getFirst(G);
+
+
 
 
         //此处求First与Follow
