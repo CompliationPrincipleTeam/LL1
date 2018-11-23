@@ -1,3 +1,5 @@
+import dataStructure.Grammar;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,13 +13,33 @@ public class EliminateLeftRecursion implements IEliminateLeftRecursion {
     /**
      * 消除直接左递归
      *
-     * @param str
+     * @param G
      */
     @Override
-    public void eliminateDirectLeftRecursion(String str) {
+    public List<String> eliminateDirectLeftRecursion(Grammar G) {
+
+        List<String> reslutGrammer = new ArrayList<String>();
+
+
+        for (String str : G.strGrammer) {
+            List<String> strings = eliminateItemDirectLeftRecursion(str);
+            if (strings != null) {
+                for (String s : strings) {
+                    reslutGrammer.add(s);
+                }
+            }
+        }
+
+        return reslutGrammer;
+
+
+    }
+
+
+    private List<String> eliminateItemDirectLeftRecursion(String str) {
         String[] split = str.split("->");
         if (split.length != 2) {
-            return;
+            return null;
         }
 
         String p = split[0];
@@ -28,24 +50,42 @@ public class EliminateLeftRecursion implements IEliminateLeftRecursion {
         List<String> ep1 = new ArrayList<String>();
         List<String> ep2 = new ArrayList<String>();
 
+        List<String> result = new ArrayList<String>();
+
 
         for (String item : expressions) {
 
             char c = item.charAt(0);
             if (isVn(c)) {
-                ep1.add(item.charAt(1) + p + "'");
+                if (c == p.charAt(0)) {
+                    ep2.add(item.substring(1) + p + "'");
+                    ep2.add("$");
+                } else {
+                    ep1.add(item + p + "'");
+                }
+
+
             } else {
-                ep2.add(c + p + "'");
+                ep1.add(item);
             }
         }
 
 
-        String strEp1 = "P'->" + arrayToString(ep1);
-        String strEp2 = p + "->" + arrayToString(ep2);
+        String strEp1;
+        String strEp2;
+
+        if (!"".equals(arrayToString(ep1))) {
+            strEp1 = p + "->" + arrayToString(ep1);
+            result.add(strEp1);
+        }
+
+        if (!"".equals(arrayToString(ep2))) {
+            strEp2 = p + "'->" + arrayToString(ep2);
+            result.add(strEp2);
+        }
 
 
-        System.out.println(strEp2);
-        System.out.println(strEp1);
+        return result;
 
     }
 
